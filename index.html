@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Eksplorator Pogody Q&A</title>
+</head>
+<body style="font-family: sans-serif; margin: 40px;">
+
+    <h2>Zadaj pytanie o pogodę w Gdańsku</h2>
+    <input type="text" id="pytanie" placeholder="Napisz: Jaka jest temperatura w Gdańsku?" style="width: 400px; padding: 10px;">
+    <button onclick="zapytaj()" style="padding: 10px 20px;">Wyślij zapytanie</button>
+    <p id="odpowiedz" style="margin-top: 20px; font-weight: bold;"></p>
+
+    <script>
+        async function zapytaj() {
+            const url = "https://xuubv961f2.execute-api.us-east-1.amazonaws.com/dev";
+            const tekstPytania = document.getElementById('pytanie').value;
+            const poleOdpowiedzi = document.getElementById('odpowiedz');
+
+            poleOdpowiedzi.innerText = "Wysyłanie zapytania do chmury AWS...";
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: JSON.stringify({ question: tekstPytania })
+                });
+                
+                const data = await response.json();
+                
+                poleOdpowiedzi.innerText = data.answer;
+                
+            } catch (error) {
+                poleOdpowiedzi.innerText = "Błąd połączenia: " + error;
+            }
+        }
+    </script>
+
+</body>
+</html>
