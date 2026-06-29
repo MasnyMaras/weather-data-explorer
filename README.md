@@ -21,4 +21,4 @@ Projekt opiera się na usługach chmurowych Amazon Web Services (AWS):
 * `/backend` - Kody źródłowe funkcji AWS Lambda realizujących ingestie danych oraz logikę asystenta Q&A.
 * `/glue_etl` - Skrypt PySpark wykorzystany w zadaniu AWS Glue do transformacji danych.
 * `/database` - Definicja schematu tabeli zewnętrznej DDL dla usługi Amazon Athena.
-* `/documentation` - Sprawozdanie z realizacji projektu w formacie LaTeX.
+* `/documentation` - Sprawozdanie z realizacji projektu w formacie pdf.
